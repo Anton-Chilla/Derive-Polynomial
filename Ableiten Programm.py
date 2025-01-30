@@ -53,7 +53,10 @@ def derive_polynomial(expression):
                 differentiated_terms.append("-" + differentiate(subterm))
         else:
             differentiated_terms.append(differentiate(term))
-    return " + ".join(filter(lambda t: t != "0", differentiated_terms))
+            
+     differentiated_terms = [term for term in differentiated_terms if term != "0" and term != "-0"]
+    
+    return " + ".join(differentiated_terms)
 
 expression = "25x^2*x^225"
 result = derive_polynomial(expression)
